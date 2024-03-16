@@ -1259,7 +1259,7 @@ class Entrance:
 
 
 
-enter = Entrance()
+# enter = Entrance()
 # enter.home()
 
 
@@ -1268,3 +1268,104 @@ enter = Entrance()
 1. Finish the entrance application above using OOP approach
 2. Build a Ussd app using OOP approach
 '''
+
+# INHERITANCE & PYTHON MODULARIZATION
+
+
+class Parent:
+    def __init__(self, x):
+        self.lastname = x
+        self.firstname = 'John'
+        self.hobby = 'Playing football'
+
+        # self.brief()
+
+    def brief(self):
+        print(f'My name is {self.lastname} {self.firstname},  I love {self.hobby}')
+
+
+father = Parent('Ojo')
+# print(father.firstname)
+# father.brief()
+
+
+class Child(Parent):
+    def __init__(self, x):
+        super().__init__(x)
+        #Or
+        # Parent.__init__(self, x)
+
+        self.firstname = 'Peter'
+        self.hobby = 'Swimming'
+        self.height = '5.4ft'
+
+        self.describe()
+    
+    def describe(self):
+        print(f'My name is {self.lastname} {self.firstname},  I love {self.hobby}. I am {self.height} tall')
+
+# first_born = Child('Ojo')
+# print(first_born.firstname)
+# first_born.brief()
+
+
+
+class UBA:
+    def __init__(self):
+        self.name = 'UBA'
+        self.Branch = 'HQrts'
+
+        # self.home()
+        
+    def home(self):
+        print(f'''
+                Welcome to {self.name} {self.Branch}
+        
+        1. Sign in 
+        2. Sign up
+
+        ''')
+
+# headbranch = UBA()
+# headbranch.home()
+
+class FirstBranch(UBA):
+    def __init__(self):
+        # super().__init__()
+        # or
+        UBA.__init__(self)
+        self.Branch = 'Lagos Branch'
+
+    def gen_otp(self):
+        print('I would be able to generate otp')
+
+# lagos = firstBranch()
+# lagos.home()
+# lagos.gen_otp()
+
+
+
+class FirstBranch_sub1(FirstBranch):
+    def __init__(self):
+        super().__init__()
+        self.Branch = 'Ikeja Lagos'
+
+ikeja = FirstBranch_sub1()
+# ikeja.gen_otp()
+ikeja.home()
+
+
+"""
+1. script : A single file that has a set programs inside of it
+2. Modules : it is a script with One or more classes inside
+3. Library : They are a folder with different modules inside
+
+"""
+
+# SQL 1 Database
+# Error handling
+# File handling
+# Regular expression
+# python date time
+# pymath
+# ipython 
