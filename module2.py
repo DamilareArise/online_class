@@ -1,11 +1,12 @@
 # import module1
-from module1 import UBA
-import time
-import random
-import datetime as dt
-import numpy
-import pandas
-from colorama import init, Fore, Back, Style
+# from module1 import UBA
+# import time
+# import random
+# import datetime as dt
+# import numpy
+# import pandas
+# from colorama import init, Fore, Back, Style
+
 # init()
 
 # print(Fore.RED + 'some red text')
@@ -21,7 +22,11 @@ from colorama import init, Fore, Back, Style
 # num = random.randint(8000000000,8099999999)
 # print(f'+234{num}')
 
+# list_ = ['wale', 'ope', 'shola', 'mark']
 # contianer = ['Apple', 'Pineapple', 'Orange', 'grape']
+# x = contianer.index('Pineapple')
+# print(list_[x])
+
 # guess = random.choice(contianer)
 # print(guess)
 
@@ -49,3 +54,4 @@ from colorama import init, Fore, Back, Style
     # lagos.home()
         
 # print(module1.__name__)
+
