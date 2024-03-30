@@ -25,6 +25,7 @@ relationship between tables
 2. onetomany relationship
 3. manytomany relationship
 '''
+# pip install mysql_connector
 
 import mysql.connector as sql
 
@@ -65,9 +66,88 @@ query = "INSERT INTO customer_table(fullname, email, account_no, account_bal, pa
 # mycon.commit()
 
 
-query = "INSERT INTO customer_table(fullname, email, account_no, account_bal, password) VALUES(%s, %s,%s, %s, %s)"
+# query = "INSERT INTO customer_table(fullname, email, account_no, account_bal, password) VALUES(%s, %s,%s, %s, %s)"
 
-values = ('Arise Tolu', 'tolu@gmail.com', '123445789', 25000, '1234')
+# values = ('Arise Tolu', 'tolu@gmail.com', '123445789', 25000, '1234')
 
-mycursor.execute(query, values)
-# mycon.commit()
+# mycursor.execute(query, values)
+# # mycon.commit()
+import random
+
+
+def signup():
+    name = input('Full name: ')
+    email = input('Email: ')
+    account_no = random.randint(2100000000, 2199999999)
+    account_bal = 0
+    password = input('preferred password: ')
+    
+    query = 'INSERT INTO customer_table(fullname, email, account_no, account_bal, password) VALUES(%s, %s, %s, %s, %s)'
+    val = (name, email, account_no, account_bal, password)
+    mycursor.execute(query,val)
+    print('Account has been created succesfully')
+
+# signup()
+    
+# SELECT QUERY
+
+# query = 'SELECT * FROM customer_table'
+# mycursor.execute(query) 
+# details = mycursor.fetchall()
+# print(details[0][3])
+    
+# query = 'SELECT * FROM customer_table WHERE email="dami@gmail.com"'
+# mycursor.execute(query) 
+# details = mycursor.fetchone()
+# print(details)
+    
+# email = input('Email: ')
+# query = 'SELECT * FROM customer_table WHERE email=%s'
+# val = (email,)
+# mycursor.execute(query, val) 
+# details = mycursor.fetchone()
+# print(details)
+
+def login():
+    email = input('Email: ')
+    password = input('Password: ')
+    query = 'SELECT fullname, account_no, account_bal FROM customer_table WHERE email=%s AND password = %s'
+    val = (email,password)
+    mycursor.execute(query, val) 
+    details = mycursor.fetchone()
+    
+    if details:
+        print('You have successfully login')
+        print(details)
+    else:
+        print('Incorrect email or password')
+
+# login()
+        
+
+# UPDATE QUERY
+        
+def reset_password():
+    email = input('Email: ')
+    new_password = input('New password: ')
+    query = 'UPDATE customer_table SET password=%s WHERE email=%s'
+    val = (new_password, email)
+    mycursor.execute(query,val)
+    print('Password rest successful')
+
+# reset_password()
+
+# DELETE QUERY
+     
+# query = 'DELETE FROM customer_table WHERE customer_id = 2'
+# mycursor.execute(query)
+# print('user deleted succesfully')
+    
+# TRUNCATE QUERY
+# query = 'TRUNCATE TABLE customer_table'
+# mycursor.execute(query)
+    
+# DROP query
+# mycursor.execute('DROP TABLE customer_table')
+# mycursor.execute('DROP DATABASE example2_db')
+    
